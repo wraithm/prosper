@@ -48,7 +48,6 @@ account user = jsonGetHandler user "Account" accountHandler
             else jsonHandler resp is
 
 -- | Used as a hack around the 500 Critical Exception error
--- described in PT-210
 data AccountException = AccountException ByteString
     deriving (Typeable, Show)
 
