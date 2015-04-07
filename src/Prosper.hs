@@ -1,8 +1,8 @@
 -- | These are bindings to the Prosper marketplace API.
 -- The documentation for the API can be seen at
 -- https://api.prosper.com/.
-module Prosper 
-    ( 
+module Prosper
+    (
     -- * Commands
       invest
     , account
@@ -36,11 +36,15 @@ module Prosper
     , InvestStatus (..)
     , InvestMessage (..)
     , InvestResponse (..)
+
+    -- * Types
+    , Money
     ) where
 
 import           Prosper.Account
 import           Prosper.Commands
 import           Prosper.Invest
 import           Prosper.Listing
+import           Prosper.Money
 import           Prosper.Note
 import           Prosper.User
