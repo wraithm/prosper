@@ -5,7 +5,7 @@ name:                prosper
 version:             0.1.0.0
 synopsis:            Bindings to the Prosper marketplace API
 -- description:         
-homepage:            api.prosper.com
+homepage:            https://api.prosper.com
 license:             BSD3
 license-file:        LICENSE
 author:              Matthew Wraith
