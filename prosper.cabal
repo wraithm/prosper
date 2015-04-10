@@ -1,5 +1,5 @@
 name:                prosper
-version:             0.1.0.0
+version:             0.1.1
 synopsis:            Bindings to the Prosper marketplace API
 description:         Bindings to the Prosper marketplace API
 homepage:            https://api.prosper.com
