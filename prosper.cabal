@@ -14,7 +14,7 @@ cabal-version:       >=1.10
 
 source-repository head
   type:     git
-  location: git://github.com/WraithM/prosper.git
+  location: https://github.com/WraithM/prosper
 
 library
   exposed-modules:     
