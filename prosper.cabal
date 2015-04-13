@@ -3,6 +3,7 @@ version:             0.1.1
 synopsis:            Bindings to the Prosper marketplace API
 description:         Bindings to the Prosper marketplace API
 homepage:            https://api.prosper.com
+bug-reports:         https://github.com/WraithM/prosper/issues
 license:             BSD3
 license-file:        LICENSE
 author:              Matthew Wraith
