@@ -11,6 +11,7 @@ module Prosper
     , listingFromNote
 
     , AccountException (..)
+    , UnauthorizedException (..)
 
     -- * User
     , User (..)

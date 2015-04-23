@@ -11,6 +11,7 @@ module Prosper.Commands
     , listingCSV
 
     , AccountException (..)
+    , UnauthorizedException (..)
     ) where
 
 import           Control.Exception     (Exception, throwIO)
@@ -42,16 +43,26 @@ invest user amt l = investRequest user (listingId l) amt
 account :: User -> IO Account
 account user = jsonGetHandler user "Account" accountHandler
   where
-    accountHandler resp is =
-        if getStatusCode resp == 500
-            then throwIO (AccountException (getStatusMessage resp))
-            else jsonHandler resp is
+    accountHandler resp is = do
+        let statusCode = getStatusCode resp
+            statusMsg = getStatusMessage resp
+        when (statusCode == 500) $
+            throwIO (AccountException statusMsg)
+        when (statusCode == 401) $
+            throwIO (UnauthorizedException statusMsg)
+        jsonHandler resp is
 
 -- | Used as a hack around the 500 Critical Exception error
 data AccountException = AccountException ByteString
     deriving (Typeable, Show)
 
 instance Exception AccountException
+
+-- | If unauthorized response, send
+data UnauthorizedException = UnauthorizedException ByteString
+    deriving (Typeable, Show)
+
+instance Exception UnauthorizedException
 
 -- | Request notes for a Prosper user
 notes :: User -> IO (Vector Note)

@@ -1,3 +1,4 @@
+{-# LANGUAGE DeriveGeneric     #-}
 {-# LANGUAGE OverloadedStrings #-}
 
 module Prosper.Account
@@ -9,6 +10,8 @@ import           Control.Applicative ((<$>), (<*>))
 import           Control.Monad       (mzero)
 
 import           Data.Aeson
+
+import           GHC.Generics
 
 import           Prosper.Money
 
@@ -31,7 +34,7 @@ data Account = Account
       -- ^ Investments on Folio
     , pendingQuickInvestOrders        :: !Money
       -- ^ Prosper Quick Invests
-    } deriving (Show, Eq)
+    } deriving (Show, Eq, Generic)
 
 -- | An empty account. All values are zero.
 emptyAccount :: Account
@@ -51,3 +54,5 @@ instance FromJSON Account where
         <*> v .: "PendingInvestmentsSecondaryMkt"
         <*> v .: "PendingQuickInvestOrders"
     parseJSON _ = mzero
+
+instance ToJSON Account where

@@ -34,6 +34,8 @@ instance FromJSON InvestStatus where
     parseJSON (String "PARTIAL_SUCCESS") = pure PartialSuccess
     parseJSON _ = mzero
 
+instance ToJSON InvestStatus where
+
 instance Serialize InvestStatus where
 
 -- | Message associated with an error
@@ -69,6 +71,19 @@ instance FromJSON InvestMessage where
     parseJSON (String "INVESTED_AMOUNT_LESS_THAN_MINIMUM_REQUIRED") =
         pure InvestedAmountLessThanMinimumRequired
     parseJSON _ = pure OtherError
+
+instance ToJSON InvestMessage where
+    toJSON NoError = String "No error"
+    toJSON InternalError = String "Prosper internal error"
+    toJSON InvestedAmountLessThanRequested = String "Invested amount less than requested"
+    toJSON ListingNotAvailable = String "Listing not available"
+    toJSON ListingNotFound = String "Listing not found"
+    toJSON InsufficientFunds = String "Insufficient funds"
+    toJSON ListingClosedBeforeBidPlaced = String "Listing closed before bid placed"
+    toJSON ServerBusy = String "Server busy"
+    toJSON SuitabilityRequirementsNotMet = String "Suitability requirements not met"
+    toJSON InvestedAmountLessThanMinimumRequired = String "Invested amount less than minimum required"
+    toJSON OtherError = String "Other"
 
 instance Serialize InvestMessage where
 

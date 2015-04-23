@@ -222,6 +222,29 @@ instance FromJSON Category where
     parseJSON (Number 20) = pure WeddingLoans
     parseJSON _ = pure Other
 
+instance ToJSON Category where
+    toJSON NotAvailable = Number 0
+    toJSON DebtConsolidation = Number 1
+    toJSON HomeImprovement = Number 2
+    toJSON Business = Number 3
+    toJSON PersonalLoan = Number 4
+    toJSON StudentUse = Number 5
+    toJSON Auto = Number 6
+    toJSON Other = Number 7
+    toJSON BabyAdoptionLoans = Number 8
+    toJSON Boat = Number 9
+    toJSON CosmeticProcedures = Number 10
+    toJSON EngagementRingFinancing = Number 11
+    toJSON GreenLoans = Number 12
+    toJSON HouseholdExpenses = Number 13
+    toJSON LargePurchases = Number 14
+    toJSON MedicalDental = Number 15
+    toJSON Motorcycle = Number 16
+    toJSON RV = Number 17
+    toJSON Taxes = Number 18
+    toJSON Vacation = Number 19
+    toJSON WeddingLoans = Number 20
+
 data Status
     = Active
     | Withdrawn
@@ -239,3 +262,5 @@ instance FromJSON Status where
     parseJSON (Number 7) = pure ListingCancelled
     parseJSON (Number 8) = pure Pending
     parseJSON _ = mzero
+
+instance ToJSON Status where
